@@ -5,8 +5,8 @@ const WatchedMovieSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String },
   genre: { type: [String] },
-  rating: { type: Number },
-  releaseDate: { type: String },
+  vote_average: { type: Number },
+  release_date: { type: String },
   poster_path: { type: String },
   watchedAt: { type: Date, default: Date.now },
 });
