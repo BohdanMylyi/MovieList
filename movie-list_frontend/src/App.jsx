@@ -1,16 +1,16 @@
-import WatchedMoviesPage from "./components/WatchedMoviesPage";
+import WatchedMoviesPage from "./pages/WatchedMoviesPage";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import HomePage from "./components/HomePage";
-import Navbar from './components/Navbar'
+import HomePage from "./pages/HomePage";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <div>
       <Provider store={store}>
         <BrowserRouter>
-              <Navbar />
+          <Navbar />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/popular-movies" element={<HomePage />} />

@@ -1,5 +1,5 @@
 import React from "react";
-import MoviesList from "./MovieList";
+import MoviesList from "../components/MovieList";
 
 const HomePage = () => {
   return (

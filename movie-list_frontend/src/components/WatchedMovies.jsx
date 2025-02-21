@@ -42,10 +42,26 @@ const WatchedMovies = () => {
 
                 <ul className="menu bg-base-200 rounded-box w-56">
                   <li>
-                    <a>Rating: {movie.vote_average}</a>
+                    <a className="flex flex-col">
+                      <div className="rating flex mx-auto">
+                        {[...Array(5)].map((_, i) => (
+                          <span
+                            key={i}
+                            className={`mask mask-star-2 w-6 h-6 ${
+                              i < Math.round(movie.vote_average / 2)
+                                ? "bg-orange-400"
+                                : "bg-gray-300"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </a>
                   </li>
                   <li>
-                    <a>Release date: {movie.release_date}</a>
+                    <a className="text-center mx-auto">
+                      Release date: <br />
+                      {movie.release_date}
+                    </a>
                   </li>
                 </ul>
 
