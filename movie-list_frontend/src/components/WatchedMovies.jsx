@@ -21,23 +21,43 @@ const WatchedMovies = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <h2>Watched movies:</h2>
-      <div className="movies-grid">
+    <div className="flex flex-col items-center h-full bg-[#F8F3D9] overflow-hidden">
+      <h1 className="font-bold text-xl my-6">Watched Movies:</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-[80%]">
         {watchedMovies.length > 0 ? (
           watchedMovies.map((movie) => (
-            <div key={movie.id} style={{ width: "200px", textAlign: "center" }}>
-              <img
-                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                alt={movie.title}
-                style={{ width: "100%" }}
-              />
-              <h3>{movie.title}</h3>
-              <button
-                onClick={() => dispatch(removeMovieFromWatched(movie.id))}
-              >
-                Delete from watched
-              </button>
+            <div
+              className="card card-compact bg-base-100 w-full shadow-xl p-4"
+              key={movie.id}
+            >
+              <figure>
+                <img
+                  src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                  alt={movie.title}
+                  className="rounded-xl"
+                />
+              </figure>
+              <div className="card-body flex flex-col items-center">
+                <h2 className="card-title">{movie.title}</h2>
+
+                <ul className="menu bg-base-200 rounded-box w-56">
+                  <li>
+                    <a>Rating: {movie.vote_average}</a>
+                  </li>
+                  <li>
+                    <a>Release date: {movie.release_date}</a>
+                  </li>
+                </ul>
+
+                <div className="card-actions justify-end">
+                  <button
+                    onClick={() => dispatch(removeMovieFromWatched(movie.id))}
+                    className="btn rounded-[50px] btn-error"
+                  >
+                    Delete from watched
+                  </button>
+                </div>
+              </div>
             </div>
           ))
         ) : (
